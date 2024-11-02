@@ -3,39 +3,48 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ICH-AR.js Examples</title>
-        <link rel="stylesheet" href="styles/main.css">
+        <title>ICH-AR.js - Web AR Platform</title>
+        <link rel="stylesheet" href="styles/shared.css">
+        <link rel="stylesheet" href="styles/home.css">
     </head>
     <body>
-        <h1>ICH-AR.js Examples</h1>
-        <div class="container">
-            <div class="section">
-                <h2>Image-Tracking</h2>
-                <ul>
-                    <li><a href="examples/image-tracking/compile.html">Compile</a></li>
-                    <li><a href="examples/image-tracking/debug.html">Debug</a></li>
-                    <li><a href="examples/image-tracking/example1.html">Example 1</a></li>
-                    <li><a href="examples/image-tracking/example2.html">Example 2</a></li>
-                    <li><a href="examples/image-tracking/example3.html">Example 3</a></li>
-                    <li><a href="examples/image-tracking/example4.html">Example 4</a></li>
-                    <li><a href="examples/image-tracking/three.html">Three.js Demo</a></li>
-                    <li><a href="examples/image-tracking/example5.html">Example5 Demo</a></li>
-                </ul>
+        <nav class="nav-bar">
+            <a href="/" class="nav-logo">ICH-AR.js</a>
+            <div class="nav-links">
+                <a href="/examples.html" class="nav-link">Examples</a>
+                <a href="#" class="nav-link">Documentation</a>
+                <a href="#" class="nav-link">Community</a>
+                <a href="https://github.com/your-repo" class="nav-link">GitHub</a>
+            </div>
+        </nav>
+
+        <section class="hero-section">
+            <h1 class="hero-title">Web AR Made Simple</h1>
+            <p class="hero-subtitle">Create immersive augmented reality experiences directly in your web browser</p>
+            <div class="cta-buttons">
+                <a href="/examples.html" class="cta-button primary-cta">View Examples</a>
+                <a href="#" class="cta-button secondary-cta">Get Started</a>
+            </div>
+        </section>
+
+        <section class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+                <h3 class="feature-title">Image Tracking</h3>
+                <p class="feature-description">Track images and overlay 3D content in real-time using your camera</p>
             </div>
             
-            <div class="section">
-                <h2>Face-Tracking</h2>
-                <ul>
-                    <li><a href="examples/face-tracking/debug.html">Debug</a></li>
-                    <li><a href="examples/face-tracking/example1.html">Example 1</a></li>
-                    <li><a href="examples/face-tracking/example2.html">Example 2</a></li>
-                    <li><a href="examples/face-tracking/example3.html">Example 3</a></li>
-                    <li><a href="examples/face-tracking/three-css.html">Three.js CSS</a></li>
-                    <li><a href="examples/face-tracking/three-facemesh.html">Three.js FaceMesh</a></li>
-                    <li><a href="examples/face-tracking/three.html">Three.js Demo</a></li>
-                    <li><a href="examples/face-tracking/three-blendshapes.html">Three.js Blendshapes</a></li>
-                </ul>
+            <div class="feature-card">
+                <div class="feature-icon">😊</div>
+                <h3 class="feature-title">Face Tracking</h3>
+                <p class="feature-description">Add face filters and effects with advanced face tracking capabilities</p>
             </div>
-        </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3 class="feature-title">Easy Integration</h3>
+                <p class="feature-description">Simple API to integrate AR features into any web application</p>
+            </div>
+        </section>
     </body>
 </html>
