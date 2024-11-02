@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script>
+      const loadImage = async (src) => {
+	return new Promise((resolve, reject) => {
+	  let img = new Image()
+	  img.onload = () => resolve(img);
+	  img.src = src; 
+	})
+      };
+    </script>
+
+    <script type="module">
+			import { Controller } from "../../src/face-target/controller.js";
+
+      const process = async() => {
+	const queryImage = await loadImage('./assets/face1.jpeg');
+	
+	const controller = new Controller({});
+	await controller.setup(true);
+
+
+	const result = await controller.faceMeshHelper.detect(queryImage);
+	console.log("result", result);
+      }
+      process();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
+

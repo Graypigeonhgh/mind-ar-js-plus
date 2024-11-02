@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <script type="module">
+      import * as THREE from "three";
+      import { MindARThree } from "../../src/face-target/three.js";
+      import {CSS3DObject} from "three/addons/renderers/CSS3DRenderer.js"
+      const mindarThree = new MindARThree({
+	container: document.querySelector("#container"),
+      });
+      const {renderer, cssRenderer, cssScene, camera} = mindarThree;
+
+      const obj = new CSS3DObject(document.querySelector("#ar-div"));
+      const cssAnchor = mindarThree.addCSSAnchor(1);
+      cssAnchor.group.add(obj);
+
+      const start = async() => {
+	await mindarThree.start();
+	renderer.setAnimationLoop(() => {
+	  cssRenderer.render(cssScene, camera);
+	});
+      }
+      start();
+    </script>
+
+    <style>
+      body {
+	margin: 0;
+      }
+      #container {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+      }
+      #ar-div {
+	width: 1000px;
+	height: 1000px;
+	visibility: hidden;
+	background: #0000ff;
+	opacity: 0.6;
+	font-size: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+      }
+      #ar-div > div {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+    </div>
+
+    <div id="ar-div">
+      <div>
+        This is a CSS div
+        <br />
+        <img src="./assets/face1.jpeg" width="50%"/>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,54 @@
+<!--
+ Basic example
+-->
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- 引入A-Frame库 -->
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <!-- 引入stats.js库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/16/Stats.min.js"></script>
+    <!-- 引入MindAR库 -->
+    <script src="../../src/image-target/aframe.js" type="module"></script>
+   
+    <style>
+      body {
+        margin: 0;
+      }
+      .example-container {
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="example-container">
+      <!-- 创建A-Frame场景 -->
+      <a-scene mindar-image="imageTargetSrc: ./assets/card-example/card.mind; showStats: true;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-assets>
+          <!-- 加载图片资源 -->
+          <img id="card" src="./assets/card-example/card.png" />
+          <!-- 加载3D模型资源 -->
+          <a-asset-item id="avatarModel" src="./assets/card-example/softmind/scene.gltf"></a-asset-item>
+        </a-assets>
+
+        <!-- 创建相机 -->
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <!-- 创建图像目标 -->
+        <a-entity mindar-image-target="targetIndex: 0">
+          <!-- 创建平面 -->
+          <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+
+          <!-- 创建3D模型 -->
+          <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel"
+            animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          >
+        </a-entity>
+      </a-scene>
+    </div>
+  </body>
+</html>
