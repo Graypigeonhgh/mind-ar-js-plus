@@ -9,15 +9,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.95);
+    
+    /* 毛玻璃效果 */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .nav-logo {
@@ -28,10 +30,12 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    transition: all 0.3s ease;
 }
 
 .nav-logo:hover {
     transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(28, 170, 217, 0.3);
 }
 
 .nav-links {
@@ -43,24 +47,30 @@
 .nav-link {
     text-decoration: none;
     color: var(--text-color);
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.2rem;
     border-radius: 25px;
     transition: all 0.3s ease;
     font-weight: 500;
     position: relative;
+    
+    /* 半透明背景 */
+    background: rgba(255, 255, 255, 0);
 }
 
 .nav-link:hover {
-    background: var(--light-bg);
+    background: rgba(255, 255, 255, 0.9);
     color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(28, 170, 217, 0.15);
 }
 
 .nav-link.active {
     background: var(--primary-color);
     color: white;
+    box-shadow: 0 4px 12px rgba(28, 170, 217, 0.2);
 }
 
-/* 添加页面内容的顶部间距，为固定导航栏留出空间 */
+/* 添加页面内容的顶部间距 */
 body {
     padding-top: 4rem;
     margin: 0;
@@ -77,11 +87,14 @@ body {
         bottom: 0;
         left: 0;
         right: 0;
-        background: white;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px) saturate(180%);
+        -webkit-backdrop-filter: blur(10px) saturate(180%);
         padding: 1rem;
         box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
         justify-content: space-around;
         display: flex;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     .nav-link {
@@ -91,6 +104,11 @@ body {
     }
 
     body {
-        padding-bottom: 4rem; /* 为底部导航栏留出空间 */
+        padding-bottom: 4rem;
     }
+}
+
+/* 添加平滑滚动效果 */
+html {
+    scroll-behavior: smooth;
 } 

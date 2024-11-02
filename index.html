@@ -19,11 +19,16 @@
         </nav>
 
         <section class="hero-section">
-            <h1 class="hero-title">Web AR Made Simple</h1>
-            <p class="hero-subtitle">Create immersive augmented reality experiences directly in your web browser</p>
-            <div class="cta-buttons">
-                <a href="/examples.html" class="cta-button primary-cta">View Examples</a>
-                <a href="#" class="cta-button secondary-cta">Get Started</a>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Web AR Made Simple</h1>
+                    <p class="hero-subtitle">Create immersive augmented reality experiences directly in your web browser</p>
+                    <div class="cta-buttons">
+                        <a href="/examples.html" class="cta-button primary-cta">View Examples</a>
+                        <a href="#" class="cta-button secondary-cta">Get Started</a>
+                    </div>
+                </div>
+                <div id="model-viewer"></div>
             </div>
         </section>
 
@@ -46,5 +51,14 @@
                 <p class="feature-description">Simple API to integrate AR features into any web application</p>
             </div>
         </section>
+
+        <script type="module">
+            import { ModelViewer } from './scripts/model-viewer.js';
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                const container = document.getElementById('model-viewer');
+                new ModelViewer(container);
+            });
+        </script>
     </body>
 </html>
