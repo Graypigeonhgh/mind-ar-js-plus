@@ -21,7 +21,7 @@ class ModelViewer {
             0.1,
             1000
         );
-        this.camera.position.set(0, 1, 5);
+        this.camera.position.set(0, 1, 4);
 
         // 创建渲染器
         this.renderer = new THREE.WebGLRenderer({ 
@@ -55,8 +55,8 @@ class ModelViewer {
         this.controls.autoRotate = true;
         this.controls.autoRotateSpeed = 2;
         this.controls.enableZoom = true; // 允许缩放
-        this.controls.minDistance = 3; // 限制最小距离
-        this.controls.maxDistance = 8; // 限制最大距离
+        this.controls.minDistance = 2; // 限制最小距离
+        this.controls.maxDistance = 6; // 限制最大距离
         this.controls.target.set(0, 1, 0); // 调整控制器目标点的高度
 
         // 加载模型
@@ -72,25 +72,23 @@ class ModelViewer {
                 const center = box.getCenter(new THREE.Vector3());
                 const size = box.getSize(new THREE.Vector3());
                 
-                // 计算期望的模型高度（以视口单位计算）
-                const desiredHeight = 3; // 可以调整这个值来改变模型大小
+                // 计算期望的模型高度
+                const desiredHeight = 2.5; // 调整模型大小
                 const scale = desiredHeight / size.y;
                 
                 // 应用缩放
                 this.model.scale.setScalar(scale);
                 
-                // 重新计算包围盒以获取新的中心点
+                // 重新计算包围盒
                 box.setFromObject(this.model);
                 box.getCenter(center);
                 
-                // 将模型放置在场景中心
-                this.model.position.x = -center.x;
-                this.model.position.y = -center.y;
-                this.model.position.z = -center.z;
-                
-                // 微调位置
-                this.model.position.y += desiredHeight / 2; // 将模型抬高一半高度
-                this.model.position.x += 0.5; // 稍微向右偏移
+                // 调整模型位置
+                this.model.position.set(
+                    -center.x,
+                    -center.y + desiredHeight / 2,
+                    -center.z
+                );
                 
                 // 为模型添加材质效果
                 this.model.traverse((node) => {
