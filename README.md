@@ -5,7 +5,7 @@
   <a href="#"><img src="https://img.shields.io/badge/version-1.0.0-green.svg" alt="Version"></a>
 </p>
 
-ICH-AR 是一个基于 Mind-ar-js 开发的非物质文化遗产数字化展示平台。本项目在 mind-ar-js 的基础上进行了深度优化，旨在通过增强现实技术为传统文化遗产提供创新的展示方式。
+ICH-AR 是一个基于 Mind-ar-js 开发的非物质文化遗产数字化展示平台。本项目在 mind-ar-js 的基础上进行了UI界面优化，旨在通过增强现实技术为传统文化遗产提供创新的展示方式。
 
 ## ✨ 特性
 
