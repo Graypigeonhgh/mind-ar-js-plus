@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文档 - ICH-AR.js</title>
+    <link rel="stylesheet" href="styles/shared.css" />
+    <link rel="stylesheet" href="styles/docs.css" />
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <a href="index.html" class="nav-logo">ICH-AR</a>
+      <div class="nav-links">
+        <a href="examples.html" class="nav-link">示例</a>
+        <a href="docs.html" class="nav-link active">文档</a>
+        <a href="#" class="nav-link">社区</a>
+        <a
+          href="https://github.com/Graypigeonhgh"
+          class="nav-link"
+          target="_blank"
+          >GitHub</a
+        >
+      </div>
+    </nav>
+
+    <div class="docs-container">
+      <aside class="docs-sidebar">
+        <div class="sidebar-section">
+          <h3>入门指南</h3>
+          <ul>
+            <li><a href="#getting-started">简介</a></li>
+            <li><a href="#installation">安装说明</a></li>
+            <li><a href="#installation-v1">安装 v1.1.x</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>图像追踪</h3>
+          <ul>
+            <li><a href="#image-quick-start">快速入门</a></li>
+            <li><a href="#image-examples">基础示例</a></li>
+            <li><a href="#image-advanced">进阶示例</a></li>
+            <li><a href="#image-api">API参考</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>人脸追踪</h3>
+          <ul>
+            <li><a href="#face-quick-start">快速入门</a></li>
+            <li><a href="#face-examples">基础示例</a></li>
+            <li><a href="#face-advanced">进阶示例</a></li>
+            <li><a href="#face-api">API参考</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>开发工具</h3>
+          <ul>
+            <li><a href="#image-compiler">图像编译器</a></li>
+            <li><a href="#dev-tools">开发者工具</a></li>
+            <li><a href="#debugging">调试指南</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>框架集成</h3>
+          <ul>
+            <li><a href="#threejs">Three.js</a></li>
+            <li><a href="#aframe">A-Frame</a></li>
+            <li><a href="#custom-backend">自定义后端</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>高级主题</h3>
+          <ul>
+            <li><a href="#custom-ui">自定义UI</a></li>
+            <li><a href="#performance">性能优化</a></li>
+            <li><a href="#best-practices">最佳实践</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>资源</h3>
+          <ul>
+            <li><a href="#examples">示例库</a></li>
+            <li><a href="#faq">常见问题</a></li>
+            <li><a href="#migration">迁移指南</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-resizer"></div>
+      </aside>
+
+      <main class="docs-content">
+        <section id="getting-started">
+          <h1>快速开始</h1>
+          <p>
+            ICH-AR.js
+            是一个专注于非物质文化遗产展示的WebAR框架，基于MindAR开发。它支持图像追踪和人脸追踪功能，可以轻松创建AR体验。
+          </p>
+
+          <h2>特性</h2>
+          <ul>
+            <li>无需安装APP，直接在浏览器中运行</li>
+            <li>支持图像追踪和人脸追踪</li>
+            <li>兼容Three.js和A-Frame框架</li>
+            <li>针对文物展示优化的性能</li>
+          </ul>
+        </section>
+
+        <section id="installation">
+          <h2>安装说明</h2>
+          <p>您可以通过多种方式使用ICH-AR.js：</p>
+
+          <h3>CDN引入</h3>
+          <div class="code-block">
+            <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/npm/ich-ar/dist/ich-ar.js"&gt;&lt;/script&gt;</code></pre>
+          </div>
+
+          <h3>NPM安装</h3>
+          <div class="code-block">
+            <pre><code class="language-bash">npm install ich-ar</code></pre>
+          </div>
+        </section>
+
+        <section id="image-quick-start">
+          <h2>图像追踪快速入门</h2>
+          <p>以下是一个基本的图像追踪示例：</p>
+
+          <div class="code-block">
+            <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/ich-ar/dist/ich-ar.js"&gt;&lt;/script&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="container"&gt;&lt;/div&gt;
+    &lt;script&gt;
+      const ichAR = new ICHAR.ImageTracker({
+        container: document.querySelector("#container"),
+        imageTargetSrc: "target.mind",
+      });
+      
+      const model = await ichAR.addModel('path/to/model.gltf');
+      await ichAR.start();
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </section>
+
+        <section id="face-quick-start">
+          <h2>人脸追踪快速入门</h2>
+          <p>创建一个基本的人脸追踪应用：</p>
+
+          <div class="code-block">
+            <pre><code class="language-javascript">const ichAR = new ICHAR.FaceTracker({
+    container: document.querySelector("#container")
+});
+
+const faceMesh = ichAR.addFaceMesh();
+faceMesh.material.map = new THREE.TextureLoader().load('mask.png');
+faceMesh.material.transparent = true;
+
+await ichAR.start();</code></pre>
+          </div>
+        </section>
+
+        <section id="image-api">
+          <h2>图像追踪 API</h2>
+
+          <h3>ICHAR.ImageTracker</h3>
+          <p>图像追踪的主要类，用于创建和管理图像追踪体验。</p>
+
+          <h4>构造函数</h4>
+          <div class="code-block">
+            <pre><code class="language-javascript">const tracker = new ICHAR.ImageTracker({
+    container: HTMLElement,    // 容器元素
+    imageTargetSrc: string,   // 目标图像文件
+    maxTrack: number,         // 最大追踪数量
+    uiLoading: string,        // 加载UI
+    uiScanning: string,       // 扫描UI
+    filterMinCF: number,      // 最小置信度
+    filterBeta: number        // 平滑系数
+});</code></pre>
+          </div>
+
+          <h4>方法</h4>
+          <ul>
+            <li>
+              <code>addModel(src: string): Promise&lt;THREE.Object3D&gt;</code>
+              - 添加3D模型
+            </li>
+            <li><code>start(): Promise&lt;void&gt;</code> - 开始追踪</li>
+            <li><code>stop(): void</code> - 停止追踪</li>
+            <li><code>destroy(): void</code> - 销毁追踪器</li>
+          </ul>
+        </section>
+
+        <section id="face-api">
+          <h2>人脸追踪 API</h2>
+
+          <h3>ICHAR.FaceTracker</h3>
+          <p>人脸追踪的主要类，用于创建和管理人脸追踪体验。</p>
+
+          <h4>构造函数</h4>
+          <div class="code-block">
+            <pre><code class="language-javascript">const tracker = new ICHAR.FaceTracker({
+    container: HTMLElement,    // 容器元素
+    maxFaces: number,         // 最大人脸数量
+    refineFace: boolean,      // 是否精细化追踪
+    filterMinCF: number,      // 最小置信度
+    filterBeta: number        // 平滑系数
+});</code></pre>
+          </div>
+
+          <h4>方法</h4>
+          <ul>
+            <li><code>addFaceMesh(): THREE.Mesh</code> - 添加人脸网格</li>
+            <li><code>start(): Promise&lt;void&gt;</code> - 开始追踪</li>
+            <li><code>stop(): void</code> - 停止追踪</li>
+          </ul>
+        </section>
+
+        <section id="compiler">
+          <h2>图像编译器</h2>
+          <p>在使用图像追踪功能之前，需要先将目标图像编译为.mind格式：</p>
+
+          <div class="code-block">
+            <pre><code class="language-javascript">const compiler = new ICHAR.ImageCompiler();
+const mindFile = await compiler.compile('target.jpg');
+await mindFile.save('target.mind');</code></pre>
+          </div>
+        </section>
+
+        <section id="installation-v1">
+          <h2>安装 v1.1.x</h2>
+          <p>从版本1.1.0开始，ICH-AR.js提供了更灵活的集成方式：</p>
+
+          <h3>CDN引入</h3>
+          <div class="code-block">
+            <pre><code class="language-html">&lt;!-- 基础库 --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/ich-ar@1.1.0/dist/ich-ar.js"&gt;&lt;/script&gt;
+
+&lt;!-- Three.js集成 --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/ich-ar@1.1.0/dist/ich-ar-three.js"&gt;&lt;/script&gt;
+
+&lt;!-- A-Frame集成 --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/ich-ar@1.1.0/dist/ich-ar-aframe.js"&gt;&lt;/script&gt;</code></pre>
+          </div>
+        </section>
+
+        <section id="image-examples">
+          <h2>图像追踪示例</h2>
+          <p>以下是一些常见的图像追踪应用场景：</p>
+
+          <h3>基础图像追踪</h3>
+          <div class="code-block">
+            <pre><code class="language-html">&lt;script&gt;
+const tracker = new ICHAR.ImageTracker({
+    container: document.querySelector("#container"),
+    imageTargetSrc: "target.mind"
+});
+
+// 添加3D模型
+const gltf = await tracker.addModel("model.gltf");
+gltf.position.set(0, 0, 0);
+gltf.scale.set(0.1, 0.1, 0.1);
+
+await tracker.start();
+&lt;/script&gt;</code></pre>
+          </div>
+
+          <h3>多目标追踪</h3>
+          <div class="code-block">
+            <pre><code class="language-javascript">const tracker = new ICHAR.ImageTracker({
+    container: document.querySelector("#container"),
+    maxTrack: 2,
+    imageTargetSrc: ["target1.mind", "target2.mind"]
+});</code></pre>
+          </div>
+        </section>
+
+        <section id="face-examples">
+          <h2>人脸追踪示例</h2>
+
+          <h3>基础脸谱应用</h3>
+          <div class="code-block">
+            <pre><code class="language-javascript">const faceTracker = new ICHAR.FaceTracker({
+    container: document.querySelector("#container")
+});
+
+const faceMesh = faceTracker.addFaceMesh();
+const texture = new THREE.TextureLoader().load("face-mask.png");
+faceMesh.material.map = texture;
+faceMesh.material.transparent = true;
+
+await faceTracker.start();</code></pre>
+          </div>
+
+          <h3>表情追踪</h3>
+          <div class="code-block">
+            <pre><code class="language-javascript">faceTracker.onUpdate((faces) => {
+    faces.forEach(face => {
+        const { expressions } = face;
+        console.log("微笑程度:", expressions.smile);
+        console.log("眨眼程度:", expressions.blink);
+    });
+});</code></pre>
+          </div>
+        </section>
+
+        <section id="threejs">
+          <h2>Three.js 集成</h2>
+          <p>ICH-AR.js 提供了与 Three.js 的深度集成支持：</p>
+
+          <div class="code-block">
+            <pre><code class="language-javascript">import * as THREE from 'three';
+import { ICHARThree } from 'ich-ar-three';
+
+const arSystem = new ICHARThree({
+    container: document.querySelector("#container")
+});
+
+const { renderer, scene, camera } = arSystem;
+
+// 添加光源
+const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
+scene.add(light);
+
+// 添加3D模型
+const model = await arSystem.loadGLTF('model.gltf');
+scene.add(model);</code></pre>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>关于我们</h3>
+          <p>ICH-AR.js致力于通过AR技术展示和传承中国非物质文化遗产。</p>
+        </div>
+        <div class="footer-section">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="/examples.html">示例展示</a></li>
+            <li><a href="/docs.html">技术文档</a></li>
+            <li><a href="#">开发指南</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>联系方式</h3>
+          <ul>
+            <li>邮箱：contact@ich-ar.com</li>
+            <li>GitHub：<a href="#">ICH-AR.js</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 ICH-AR.js. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="scripts/docs.js"></script>
+  </body>
+</html>
